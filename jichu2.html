@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="assets/js/vue.min.js"></script>
+    <title>自定义指令及其生命周期</title>
+</head>
+<body>
+	<h1>自定义指令及其生命周期</h1>
+<div id="app">
+    <div v-mydirective.modify1.mofify22="mycolor">
+        {{ name }}
+    </div>
+</div>
+<button onclick="unbindApp()">解绑</button>
+<script>
+    function unbindApp() {
+        vm.$destroy();
+    }
+    Vue.directive("mydirective",{
+        bind:function (el, binding, vnode) { //1-被绑定
+            console.log("1-bind 被绑定");
+            console.log("el:",el);
+            console.log("binding:",binding);
+            console.log("vnode:",vnode);
+            el.style.color=binding.value;
+        },
+        inserted:function (el, binding, vnode) { //2-被插入
+            console.log("2-inserted 被插入");
+        },
+        update:function (el, binding, vnode) { //3-更新
+            console.log("3-update 更新");
+        },
+        componentUpdated:function (el, binding, vnode) { //4-更新完成
+            console.log("4-componentUpdated 更新完成");
+        },
+        unbind:function (el, binding, vnode) { //5-解绑
+            console.log("5-unbind 解绑");
+        }
+    });
+
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            mycolor:"blue",
+            name:"mydirective指令"
+        }
+    });
+
+</script>
+</body>
+</html>

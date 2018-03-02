@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="assets/js/vue.min.js"></script>
+    <title>Helloworld</title>
+<script>
+x = 0
+y = 0
+function count1( )
+{　x = x+ 1
+　 document.display1.box1.value= x
+　 meter1=setTimeout("count1()", 1000)
+}
+function count2( )
+{　y = y+ 1
+　 document.display2.box2.value= y
+　 meter2=setTimeout("count2()", 1000)
+} 
+</script>
+</head>
+<form name=display1>
+<input type="text" name="box1"value="0" size=4 >
+<input type=button value="停止计时" onClick="clearTimeout(meter1)" >
+<input type=button value="继续计时" onClick="count1() " >
+</form>
+<form name=display2>
+<input type="text" name="box2"value="0" size=4 >
+<input type=button value="停止计时" onClick="clearTimeout(meter2) " >
+<input type=button value="继续计时" onClick="count2( ) " >
+</form>
+<script>
+count1( )
+count2( )
+</script>
+</body>
+</html>
