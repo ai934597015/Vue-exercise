@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="assets/js/vue.js"></script>
+    <title>component-1</title>
+</head>
+<body>
+
+    <div id="app">
+		<panda v-bind:here="message"></panda>
+    </div>
+
+    <script type="text/javascript">
+        var app=new Vue({
+            el:'#app',
+            data:{
+               message:'SiChuan' 
+            },
+            components:{
+                "panda":{
+                    template:`<div style="color:red;">Panda from {{ here }}.</div>`,
+                    props:['here']
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>
